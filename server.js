@@ -13,11 +13,13 @@ const users = {}; // username -> socket.id
 
 // MySQL connection
 const db = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "123ab*712Asd&&",
-  database: "chat_app",
+  host: process.env.DB_HOST,      // Railway host
+  user: process.env.DB_USER,      // Railway username
+  password: process.env.DB_PASSWORD, // Railway password
+  database: process.env.DB_NAME,  // Railway database name
+  port: process.env.DB_PORT       // Railway port
 });
+
 
 // Keep admin names lowercase for consistent checks
 const admins = new Set(["hafeez", "adminUser"].map((s) => s.toLowerCase()));
