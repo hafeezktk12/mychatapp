@@ -1,0 +1,289 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  background: #f0f0f0;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 25%;
+  min-width: 240px;
+  background: #fff;
+  border-right: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-header {
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  border-bottom: 1px solid #ddd;
+}
+
+.search {
+  padding: 10px;
+}
+
+.search input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.chat-list {
+  flex: 1;
+  overflow: auto;
+}
+
+.chat-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.chat-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #f1f1f1;
+  position: relative;
+  padding-right: 30px; /* space for badge */
+}
+
+.chat-item:hover {
+  background: #f9f9f9;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+.avatar.public {
+  background: #ff9800;
+}
+
+.avatar.user {
+  background: #4caf50;
+}
+
+.chat-info p {
+  margin: 0;
+  font-weight: 700;
+}
+
+.chat-info span {
+  font-size: 12px;
+  color: gray;
+}
+
+/* Chat window */
+.chat-window {
+  flex: 1;
+  display: none;
+  flex-direction: column;
+  background: #e5ddd5;
+  position: relative;
+}
+
+.chat-window.active {
+  display: flex;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+}
+
+.back-btn {
+  display: none;
+  margin-right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.chat-user {
+  font-weight: 700;
+}
+
+.messages {
+  flex: 1;
+  padding: 20px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scroll-behavior: smooth;
+}
+
+.messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.messages::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.message {
+  max-width: 66%;
+  padding: 10px;
+  border-radius: 12px;
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+.incoming {
+  background: #fff;
+  align-self: flex-start;
+  border: 1px solid #ddd;
+}
+
+.outgoing {
+  background: #dcf8c6;
+  align-self: flex-end;
+}
+
+.meta {
+  display: block;
+  font-size: 10px;
+  color: gray;
+  margin-top: 6px;
+  text-align: right;
+}
+
+/* Chat input */
+.chat-input {
+  display: flex;
+  padding: 10px;
+  background: #fff;
+  border-top: 1px solid #ddd;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.chat-input button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  background: #4caf50;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-input button:hover {
+  background: #45a049;
+}
+
+/* Chat notification badge */
+.chat-item .badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 3px 7px;
+  min-width: 20px;
+  text-align: center;
+  line-height: 16px;
+}
+
+/* Admin popup menu */
+.popup-menu {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  padding: 5px;
+}
+
+.popup-menu button {
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.popup-menu button:hover {
+  background: #f1f1f1;
+}
+
+/* Delete message button */
+.delete-msg-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  float: right;
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.delete-msg-btn:hover {
+  color: red;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    height: 100%;
+  }
+  .chat-window {
+    width: 100%;
+    height: 100%;
+  }
+  .back-btn {
+    display: inline-block;
+  }
+}

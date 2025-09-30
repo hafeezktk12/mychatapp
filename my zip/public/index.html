@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Responsive Chat App — Public & Private</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Put this at the bottom of your <body> -->
+    <div
+      id="adminMenu"
+      style="
+        display: none;
+        position: absolute;
+        background: white;
+        border: 1px solid #ccc;
+        padding: 5px;
+        z-index: 1000;
+      "
+    >
+      <button id="kickUserBtn">Kick</button>
+      <button id="muteUserBtn">Mute</button>
+      <button id="promoteUserBtn">Promote</button>
+      <button id="demoteUserBtn">Depromote</button>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">Chats</div>
+
+      <div class="search">
+        <input id="searchInput" placeholder="Search..." />
+      </div>
+
+      <div class="chat-list" id="chatList">
+        <!-- Public Chat (always present) -->
+        <div
+          class="chat-item"
+          data-type="public"
+          aria-role="button"
+          tabindex="0"
+        >
+          <div class="avatar public">🌍</div>
+          <div class="chat-info">
+            <p>Public Chat</p>
+            <span>Everyone</span>
+          </div>
+        </div>
+        <!-- 🔹 Private users will be inserted dynamically -->
+      </div>
+    </div>
+
+    <!-- Chat Window -->
+    <div
+      class="chat-window"
+      id="chatWindow"
+      role="region"
+      aria-label="Chat Window"
+    >
+      <div class="chat-header">
+        <button id="backBtn" class="back-btn">⬅</button>
+        <div class="avatar user" id="headerAvatar">U</div>
+        <div class="chat-user" id="chatUser">Chat</div>
+        <!-- Admin Menu Button -->
+        <button id="toggleAdminControlsBtn" style="margin-left: auto">
+          ⚙️
+        </button>
+      </div>
+
+      <!-- 🔹 Admin Context Menu (per-user actions) -->
+      <div
+        id="adminMenu"
+        style="
+          display: none;
+          position: absolute;
+          background: white;
+          border: 1px solid #ccc;
+          padding: 5px;
+          z-index: 1000;
+        "
+      >
+        <button id="kickUserBtn">Kick</button>
+        <button id="muteUserBtn">Mute</button>
+        <button id="promoteUserBtn">Promote</button>
+        <button id="demoteUserBtn">Depromote</button>
+      </div>
+
+      <!-- Toggle button for admin controls -->
+      <button id="toggleAdminControlsBtn" style="margin: 5px">
+        Admin Menu
+      </button>
+
+      <div id="adminControls" style="display: none; margin: 5px">
+        <button id="deleteUserMessagesBtn">Delete User Messages</button>
+        <button id="deleteAllBtn">Delete All Messages</button>
+      </div>
+
+      <div class="messages" id="messages"></div>
+
+      <div class="chat-input">
+        <input id="messageInput" placeholder="Type a message..." />
+        <button id="sendBtn">Send</button>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
