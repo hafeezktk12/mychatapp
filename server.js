@@ -59,6 +59,7 @@ io.on("connection", (socket) => {
       const [rows] = await db.query(
         "SELECT id, sender AS `from`, text, time FROM messages WHERE type='public' ORDER BY id DESC LIMIT 50"
       );
+      console.log("Fetched old messages from DB for", username, ":", rows); // <-- add this
       socket.emit("loadOldMessages", rows.reverse());
     } catch (err) {
       console.error("DB fetch error:", err);
