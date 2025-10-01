@@ -597,26 +597,6 @@ socket.on("actionResult", (res) => {
   alert(res.msg || (res.ok ? "Done" : "Error"));
 });
 
-// ---------------------- Badge helper ----------------------
-function updateChatBadge(chat) {
-  const item =
-    chat === "public"
-      ? chatList.querySelector(".chat-item[data-type='public']")
-      : chatList.querySelector(`.chat-item[data-user='${chat}']`);
-  if (!item) return;
-
-  let badge = item.querySelector(".badge");
-  if (unseenPerChat[chat] > 0) {
-    if (!badge) {
-      badge = document.createElement("span");
-      badge.className = "badge";
-      item.appendChild(badge);
-    }
-    badge.textContent = unseenPerChat[chat] > 99 ? "99+" : unseenPerChat[chat];
-  } else {
-    if (badge) badge.remove();
-  }
-}
 
 // ---------------------- Window resize handling ----------------------
 window.addEventListener("resize", () => {
