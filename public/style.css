@@ -287,3 +287,21 @@ body {
     display: inline-block;
   }
 }
+
+
+#publicBtn {
+    position: fixed; /* fixes it on the screen */
+    top: 10px;       /* distance from top */
+    right: 20px;     /* distance from right */
+    z-index: 1000;   /* stays above other elements */
+    padding: 10px 20px;
+    background: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#publicBtn:hover {
+    background: #45a049;
+}
