@@ -549,6 +549,7 @@ messageInput.addEventListener("keydown", (e) => {
 socket.on("loadOldMessages", (msgs) => {
   // format time
   msgs.forEach((m) => (m.time = formatDateTime(m.time)));
+   console.log("✅ loadOldMessages payload:", msgs);
   store.public = msgs;
 
   // always render if public chat exists
