@@ -547,15 +547,14 @@ messageInput.addEventListener("keydown", (e) => {
 
 // ---------------------- Socket: load old messages + incoming ----------------------
 socket.on("loadOldMessages", (msgs) => {
-  // format time
+  console.log("🚀 loadOldMessages received:", msgs); // add this line
   msgs.forEach((m) => (m.time = formatDateTime(m.time)));
-   console.log("✅ loadOldMessages payload:", msgs);
   store.public = msgs;
 
-  // always render if public chat exists
-  if (!currentChat) openChatType("public"); // open public chat if not already
+  if (!currentChat) openChatType("public");
   renderMessages();
 });
+
 
 
 socket.on("publicMessage", (msg) => {
