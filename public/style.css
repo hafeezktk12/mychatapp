@@ -290,18 +290,28 @@ body {
 
 
 #publicBtn {
-    position: fixed; /* fixes it on the screen */
-    top: 10px;       /* distance from top */
-    right: 20px;     /* distance from right */
-    z-index: 1000;   /* stays above other elements */
+    position: fixed;  /* fixes it on screen */
+    top: 15px;        /* distance from top */
+    right: 15px;      /* distance from right */
+    z-index: 2000;    /* make sure it is above everything */
     padding: 10px 20px;
     background: #4caf50;
     color: #fff;
     border: none;
     border-radius: 6px;
     cursor: pointer;
+    font-weight: bold;
 }
 
 #publicBtn:hover {
     background: #45a049;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    #publicBtn {
+        top: 60px;   /* avoids overlapping chat header */
+        right: 10px;
+        padding: 8px 16px;
+    }
 }
